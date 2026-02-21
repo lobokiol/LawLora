@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# 虚拟环境
+.venv/
+venv/
+
+# 缓存
+.ruff_cache/
+.pytest_cache/
+
+# 日志
+logs/
+*.log
+
+# 临时文件
+tmp/
+
+# IDE
+.vscode/
+.idea/
+
+# 系统文件
+.DS_Store
+code.lnk
+
+# 训练数据（大文件）
+data/
+
+# 模型权重（大文件）
+qwen_lora_model/
+qwen_lora_output/
+*.pt
+*.safetensors
+
+# 数据库文件
+law_db
+*.db
