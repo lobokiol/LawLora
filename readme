@@ -1,6 +1,1 @@
-#如果报错
-    new_fpath = r.Rlocation(
-                ^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'Rlocation'
 
-把tensorboard卸载
