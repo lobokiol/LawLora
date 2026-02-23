@@ -1,1 +1,79 @@
 
+
+LawLora
+
+基于 Qwen3-8B 的法律文本多分类微调项目，使用 LoRA（Low-Rank Adaptation） 实现高效参数微调，可用于法律罪名分类等专业领域任务。
+
+项目目标是提供一个高效、低资源消耗的法律文本分类训练与推理流程，同时保留大模型的通用语言能力。
+
+🚀 项目简介
+
+许多法律业务需要对大量文本进行标准化分类，但直接微调整个大模型开销大且不现实。
+本项目采用 LoRA 技术，只微调极少部分参数（约 0.05%），在保留模型预训练能力的基础上实现高质量的分类效果。
+
+该方法相比全量参数训练大幅减少显存和时间成本，同时保持可部署性。
+这是一个可完整复现的工程样例，包括数据生成、训练脚本、评估及推理代码。
+
+📌 特性亮点
+
+使用 Qwen3-8B 作为底座模型，保留强大的语言理解与推理能力。
+
+通过 LoRA 微调 只训练少量参数，显存开销低、训练效率高。
+
+实现法律文本 183 类罪名分类 支持多类别输出。
+
+提供完整训练、推理和评估流程。
+
+🛠 功能模块结构
+模块	说明
+generate_data_classify.py	数据生成与预处理
+finetune_lora_classify.py	LoRA 训练脚本
+predict.py	预测推理入口
+predict_accusation.py	法律罪名分类调用函数
+cal_score.py	评估指标计算
+Embedding.py	文本嵌入工具（可选）
+🚀 快速开始
+
+克隆仓库
+
+git clone https://github.com/lobokiol/LawLora.git
+cd LawLora
+
+安装依赖
+
+pip install -r requirements.txt
+
+按需求准备训练数据（JSON/CSV）
+
+开始 LoRA 微调
+
+python finetune_lora_classify.py --data_path dataset.jsonl
+
+推理测试
+
+python predict.py --model_path output/
+✨ 技术原理简介
+
+LoRA（Low-Rank Adaptation） 是一种高效微调技术，它将模型权重分解为低秩适配器矩阵，仅训练这些小矩阵以适应新任务。这种方式显著降低了训练中的显存与参数存储开销，同时在许多分类任务上取得了良好效果。
+
+相比全量微调，LoRA 的优点包括：
+
+参数规模小
+
+训练成本低
+
+可快速迭代多种任务
+
+支持不同任务共享底座模型
+
+🧪 效果评估建议
+
+使用混淆矩阵评估分类准确率
+
+对比全量训练与 LoRA 在效果与成本上的差异
+
+对不同 LoRA 配置做 ablation 分析
+
+📁 项目标签
+
+LLM、LoRA、Qwen3、法律分类、低资源微调、文本分类、Python
